@@ -3,7 +3,7 @@ import random
 import sys
 from pygame.locals import *
 from os import path
-
+import time
 
 H = 800
 W = 600
@@ -19,7 +19,7 @@ font_name = pygame.font.match_font('arial')
 
 def draw_text(surf, text, size, x, y):
     font = pygame.font.Font(font_name, size)
-    text_surface = font.render(text, True, Blue)
+    text_surface = font.render(text, True, Red)
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x, y)
     surf.blit(text_surface, text_rect)
@@ -237,10 +237,11 @@ while True:
         surface.fill(Black)
         surface.blit(pole, pole_rect)
         all_sprites.draw(surface)
-        draw_text(surface, str(score), 30, W/2, 20)
+        draw_text(surface, str(score), 40, W/2-50, 40)
         pygame.display.flip()
     pygame.mixer.music.stop()
     gameOverSound.play()
+    time.sleep(1)
     surface.fill(Black)
     surface.blit(exit_menu, ex_rect)
     pygame.display.update()
